@@ -9,12 +9,13 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
+    "slider-banner": {
+      "type": "custom-slider",
+      "settings": {
+      }
     }
   },
   "order": [
-    "main"
+    "slider-banner"
   ]
 }

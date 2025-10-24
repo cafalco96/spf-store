@@ -1,0 +1,124 @@
+{{ 'section.custom-slider.css' | asset_url | stylesheet_tag }}
+
+<!-- Slider main container -->
+<div class="swiper">
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div class="swiper-slide">
+        {% if block.settings.slide_image %}
+          {% render 'image',
+            image: block.settings.slide_image,
+            css_class: 'slide-image',
+            alt: block.settings.slide_text
+          %}
+        {% endif %}
+        <div class="slide-content">
+          <h2>{{ block.settings.slide_text }}</h2>
+          {% if block.settings.link_url %}
+            <a href="{{ block.settings.link_url }}" class="slide-link">
+              {{ block.settings.link_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Elementos requeridos por Swiper -->
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev" aria-hidden="true"></div>
+  <div class="swiper-button-next" aria-hidden="true"></div>
+  <div class="swiper-scrollbar"></div>
+</div>
+
+{% javascript %}
+  (function () {
+    function initSwiper() {
+      if (typeof Swiper === 'undefined') return false;
+      var container = document.querySelector('.swiper');
+      if (!container) return false;
+
+      new Swiper(container, {
+        direction: 'horizontal',
+        loop: true,
+        pagination: { el: container.querySelector('.swiper-pagination'), clickable: true },
+        navigation: {
+          nextEl: container.querySelector('.swiper-button-next'),
+          prevEl: container.querySelector('.swiper-button-prev'),
+        },
+        scrollbar: { el: container.querySelector('.swiper-scrollbar') },
+        observer: true,
+        observeParents: true,
+        on: {
+          imagesReady: function () {
+            this.update();
+          },
+        },
+      });
+
+      return true;
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      if (!initSwiper()) window.addEventListener('load', initSwiper, { once: true });
+    } else {
+      document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+          if (!initSwiper()) window.addEventListener('load', initSwiper, { once: true });
+        },
+        { once: true }
+      );
+    }
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Custom Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text 1",
+      "default": "Hello, World!",
+      "info": "Texto para el primer slider"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider",
+      "name": "Slider",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slide_image",
+          "label": "Selecciona una imagen"
+        },
+        {
+          "type": "text",
+          "id": "slide_text",
+          "label": "Titulo del Slide",
+          "default": "Texto del Slide"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Texto del enlace",
+          "default": "Saber más"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "URL del enlace"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Slider"
+    }
+  ]
+}
+{% endschema %}

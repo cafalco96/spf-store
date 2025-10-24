@@ -7,6 +7,9 @@
     {% # Load and preload the critical CSS %}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
 
+    {{ 'swiper-min.css' | asset_url | stylesheet_tag }}
+    <link rel="preload" as="script" href="{{ 'swiper-min.js' | asset_url }}" />
+
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}
 
@@ -19,5 +22,7 @@
     {{ content_for_layout }}
 
     {% sections 'footer-group' %}
+    <!-- Cargar Swiper al final para asegurar disponibilidad antes del init -->
+    <script src="{{ 'swiper-min.js' | asset_url }}"></script>
   </body>
 </html>
