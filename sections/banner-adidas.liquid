@@ -1,0 +1,123 @@
+{{ 'adidas-banner.css' | asset_url | stylesheet_tag }}
+{% if section.settings.main_image %}
+{{
+  section.settings.main_image
+  | image_url: width: 2000
+  | image_tag:
+    class: 'adidas-banner-image',
+    loading: 'eager',
+    decoding: 'async',
+    widths: '600, 1000, 1500, 2000',
+    alt: section.settings.title
+  | escape
+}}
+{% endif %}
+
+<article class="adidas-banner-content adidas-banner-content--{{ section.settings.content_position }}">
+  {% if section.settings.title and section.settings.title != blank %}
+    <h1>{{ section.settings.title }}</h1>
+  {% endif %}
+
+  {% if section.settings.subtitle and section.settings.subtitle != blank %}
+    <p>{{ section.settings.subtitle }}</p>
+  {% endif %}
+  <div class="adidas-banner-btn-container">
+    {% if section.settings.button_text_1 and section.settings.button_text_1 != blank %}
+      <a href="{{ section.settings.button_link_1 }}" class="adidas-banner-btn adidas-banner-btn-1">
+        {{ section.settings.button_text_1 }}
+      </a>
+    {% endif %}
+
+    {% if section.settings.button_text_2 and section.settings.button_text_2 != blank %}
+      <a href="{{ section.settings.button_link_2 }}" class="adidas-banner-btn adidas-banner-btn-2">
+        {{ section.settings.button_text_2 }}
+      </a>
+    {% endif %}
+
+    {% if section.settings.button_text_3 and section.settings.button_text_3 != blank %}
+      <a href="{{ section.settings.button_link_3 }}" class="adidas-banner-btn adidas-banner-btn-3">
+        {{ section.settings.button_text_3 }}
+      </a>
+    {% endif %}
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Banner Adidas",
+  "class": "adidas-banner-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text_1",
+      "label": "Button 1 Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Button 2 Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text_3",
+      "label": "Button 3 Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link_3",
+      "label": "Button 3 Link"
+    },
+    {
+      "type": "header",
+      "content": "Content Position"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content Position",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "middle", "label": "Middle" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "bottom"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Banner Adidas"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,65 @@
+.adidas-banner-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+.adidas-banner-section .adidas-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.adidas-banner-section .adidas-banner-content {
+  position: absolute;
+  width: 50%;
+  padding: 20px;
+  color: #fff;
+}
+
+.adidas-banner-section .adidas-banner-content h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+}
+.adidas-banner-section .adidas-banner-content p {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+.adidas-banner-section .adidas-banner-btn-container {
+  margin-top: 20px;
+  display: none;
+  gap: 10px;
+}
+.adidas-banner-section .adidas-banner-btn {
+  padding: 5px 15px;
+  background: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  color: black;
+}
+
+.adidas-banner-btn:hover {
+  background-color: #e0e0e0;
+}
+
+@media (min-width:768px) {
+  .adidas-banner-section .adidas-banner-btn-container {
+    display: flex;
+  }
+}
+
+.adidas-banner-content--top {
+  top: 5%;
+}
+.adidas-banner-content--middle {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.adidas-banner-content--bottom {
+  bottom: 5%;
+}
