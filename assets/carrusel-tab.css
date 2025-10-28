@@ -1,0 +1,230 @@
+/* ============================================
+   MOBILE-FIRST: Tabs Container
+   ============================================ */
+
+.carrusel-tabs-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ============================================
+   TAB TITLES - Mobile
+   ============================================ */
+
+.tabs-titles {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 0;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fafafa;
+  padding: 0;
+  margin: 0;
+  /* Smooth scrolling en móvil */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Oculta scrollbar pero permite scroll */
+.tabs-titles::-webkit-scrollbar {
+  height: 3px;
+}
+
+.tabs-titles::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tabs-titles::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+/* ============================================
+   TAB TITLE ITEM - Mobile
+   ============================================ */
+
+.tab-title {
+  display: inline-block;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.tab-title:hover {
+  color: #333;
+  background-color: #f0f0f0;
+}
+
+/* Indicador activo (línea inferior) */
+.tab-title[active] {
+  color: #111;
+  font-weight: 600;
+  border-bottom: 2px solid #111;
+  background-color: #fff;
+}
+
+.tab-title[active]::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #111;
+  animation: slideIn 0.3s ease;
+}
+
+/* ============================================
+   TAB CONTENTS - Mobile
+   ============================================ */
+
+.tabs-contents {
+  width: 100%;
+  padding: 16px 0;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content[active] {
+  display: block;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ============================================
+   TABLET - 640px+
+   ============================================ */
+
+@media (min-width: 640px) {
+  .tabs-titles {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 12px;
+  }
+
+  .tab-title {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+  }
+
+  .tabs-contents {
+    padding: 20px 12px;
+  }
+}
+
+/* ============================================
+   DESKTOP - 768px+
+   ============================================ */
+
+@media (min-width: 768px) {
+  .tabs-titles {
+    display: flex;
+    overflow-x: visible;
+    justify-content: center;
+    gap: 4px;
+    border-bottom: 2px solid #e5e5e5;
+    padding: 0 24px;
+  }
+
+  .tab-title {
+    padding: 16px 24px;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+  }
+
+  .tab-title:hover {
+    background-color: transparent;
+    color: #111;
+    border-bottom: 2px solid #111;
+  }
+
+  .tabs-contents {
+    padding: 32px 24px;
+  }
+}
+
+/* ============================================
+   LARGE DESKTOP - 1024px+
+   ============================================ */
+
+@media (min-width: 1024px) {
+  .carrusel-tabs-container {
+    max-width: 1200px;
+  }
+
+  .tabs-titles {
+    padding: 0 40px;
+  }
+
+  .tab-title {
+    padding: 18px 32px;
+    font-size: 1.05rem;
+  }
+
+  .tabs-contents {
+    padding: 40px;
+  }
+}
+
+/* ============================================
+   ACCESIBILIDAD
+   ============================================ */
+
+.tab-title:focus {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.tab-title[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   PREFERENCIA DE USUARIO: Reducir movimiento
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-title,
+  .tab-content {
+    transition: none;
+    animation: none;
+  }
+}

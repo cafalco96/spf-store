@@ -1,0 +1,56 @@
+{{ 'carrusel-tab.css' | asset_url | stylesheet_tag }}
+
+<tabs-container>
+<section class="tabs-titles">
+  {% for block in section.blocks %}
+    {% if block.settings['tab-title'] %}
+        <tab-title class="tab-title" index="{{ forloop.index }}"
+        {% if forloop.first %} active {% endif %}
+        >{{ block.settings['tab-title'] }}</tab-title>
+    {% endif %}
+  {% endfor %}
+</section>
+<section class="tabs-contents">
+  {% for block in section.blocks %}
+    {% if block.settings['tab-collection'] %}
+      <tab-content class="tab-content" index="{{ forloop.index }}"
+      {% if forloop.first %} active {% endif %}
+      >
+        {{ block.settings['tab-collection'] }}
+      </tab-content>
+    {% endif %}
+  {% endfor %}
+</section>
+</tabs-container>
+{% schema %}
+{
+  "name": "Carrusel Tabs",
+  "class": "carrousel-tqabs-container",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "carrusel-tab",
+      "name": "Carrusel Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab-title",
+          "label": "Tab title"
+        },
+        {
+          "type": "collection",
+          "id": "tab-collection",
+          "label": "Tab Collection",
+          "info": "Select a collection for this tab."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carrusel Tabs"
+    }
+  ]
+}
+{% endschema %}
