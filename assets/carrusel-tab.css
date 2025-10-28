@@ -228,3 +228,145 @@
     animation: none;
   }
 }
+
+/* ============================================
+   PRODUCT GRID & CARDS
+   ============================================ */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 12px;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.product-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.3;
+  min-height: 2.6em; /* 2 líneas máximo */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card .price {
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.product-card .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.15s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.product-card .btn:hover {
+  background: #333;
+  transform: scale(1.05);
+}
+
+/* ============================================
+   TABLET - 640px+
+   ============================================ */
+
+@media (min-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .product-card {
+    padding: 16px;
+  }
+
+  .product-card img {
+    height: 240px;
+  }
+}
+
+/* ============================================
+   DESKTOP - 768px+
+   ============================================ */
+
+@media (min-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .product-card {
+    padding: 20px;
+  }
+
+  .product-card img {
+    height: 280px;
+  }
+
+  .product-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .product-card .price {
+    font-size: 1.2rem;
+  }
+
+  .product-card .btn {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================
+   LARGE DESKTOP - 1024px+
+   ============================================ */
+
+@media (min-width: 1024px) {
+  .products-grid {
+    gap: 28px;
+  }
+
+  .product-card {
+    padding: 24px;
+  }
+
+  .product-card img {
+    height: 300px;
+  }
+}
