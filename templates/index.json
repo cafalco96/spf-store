@@ -27,6 +27,34 @@
     },
     "carrusek_tabs_7CbTFH": {
       "type": "carrusek-tabs",
+      "blocks": {
+        "carrusel_tab_Cd4Hxx": {
+          "type": "carrusel-tab",
+          "settings": {
+            "tab-title": "Trending",
+            "tab-collection": "hydrogen"
+          }
+        },
+        "carrusel_tab_DDcKEt": {
+          "type": "carrusel-tab",
+          "settings": {
+            "tab-title": "New",
+            "tab-collection": "frontpage"
+          }
+        },
+        "carrusel_tab_qYwgFr": {
+          "type": "carrusel-tab",
+          "settings": {
+            "tab-title": "Home",
+            "tab-collection": "automated-collection"
+          }
+        }
+      },
+      "block_order": [
+        "carrusel_tab_Cd4Hxx",
+        "carrusel_tab_DDcKEt",
+        "carrusel_tab_qYwgFr"
+      ],
       "name": "Carrusel Tabs",
       "settings": {}
     },
