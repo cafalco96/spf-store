@@ -9,6 +9,27 @@
  */
 {
   "sections": {
+    "banner_adidas_GQjpW7": {
+      "type": "banner-adidas",
+      "name": "Banner Adidas",
+      "settings": {
+        "main_image": "shopify://shop_images/online_sale_lad-d.jpg",
+        "title": "Test Store",
+        "subtitle": "My first custom store",
+        "button_text_1": "BTN 1",
+        "button_link_1": "shopify://pages/contact",
+        "button_text_2": "BTN 2",
+        "button_link_2": "shopify://pages/data-sharing-opt-out",
+        "button_text_3": "BTN 3",
+        "button_link_3": "shopify://pages/data-sharing-opt-out",
+        "content_position": "bottom"
+      }
+    },
+    "carrusek_tabs_7CbTFH": {
+      "type": "carrusek-tabs",
+      "name": "Carrusel Tabs",
+      "settings": {}
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -116,6 +137,8 @@
     }
   },
   "order": [
+    "banner_adidas_GQjpW7",
+    "carrusek_tabs_7CbTFH",
     "featured_collection",
     "f1552b18-6017-4231-810d-74e61da22c37",
     "38cdf60f-e431-43b5-aac3-7e6215447d67"
