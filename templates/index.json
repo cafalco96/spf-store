@@ -14,6 +14,7 @@
       "name": "Banner Adidas",
       "settings": {
         "main_image": "shopify://shop_images/online_sale_lad-d.jpg",
+        "image_collection": "automated-collection",
         "title": "Test Store",
         "subtitle": "My first custom store",
         "button_text_1": "BTN 1",
@@ -22,7 +23,8 @@
         "button_link_2": "shopify://pages/data-sharing-opt-out",
         "button_text_3": "BTN 3",
         "button_link_3": "shopify://pages/data-sharing-opt-out",
-        "content_position": "bottom"
+        "content_position": "bottom",
+        "content_position_horizontal": "center"
       }
     },
     "carrusek_tabs_7CbTFH": {
