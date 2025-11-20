@@ -63,3 +63,23 @@
 .adidas-banner-content--bottom {
   bottom: 5%;
 }
+
+.adidas-banner-content--left {
+  left: 5%;
+  text-align: left;
+}
+.adidas-banner-content--center {
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.adidas-banner-content--center .adidas-banner-btn-container {
+  justify-content: center;
+}
+.adidas-banner-content--right {
+  right: 5%;
+  text-align: right;
+}
+.adidas-banner-content--right .adidas-banner-btn-container {
+  justify-content: flex-end;
+}
