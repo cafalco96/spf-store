@@ -1,19 +1,24 @@
 {{ 'adidas-banner.css' | asset_url | stylesheet_tag }}
-{% if section.settings.main_image %}
-{{
-  section.settings.main_image
-  | image_url: width: 2000
-  | image_tag:
-    class: 'adidas-banner-image',
-    loading: 'eager',
-    decoding: 'async',
-    widths: '600, 1000, 1500, 2000',
-    alt: section.settings.title
-  | escape
-}}
+{% if section.settings.image_collection != blank and section.settings.image_collection.image %}
+  {{
+    section.settings.image_collection.image
+    | image_url: width: 2000
+    | image_tag:
+      loading: 'eager',
+      class: 'adidas-banner-image',
+      alt: section.settings.image_collection.title
+  }}
+{% elsif section.settings.main_image != blank %}
+  {{
+    section.settings.main_image
+    | image_url: width: 2000
+    | image_tag:
+      loading: 'eager',
+      class: 'adidas-banner-image'
+  }}
 {% endif %}
 
-<article class="adidas-banner-content adidas-banner-content--{{ section.settings.content_position }}">
+<article class="adidas-banner-content adidas-banner-content--{{ section.settings.content_position }} adidas-banner-content--{{ section.settings.content_position_horizontal }}">
   {% if section.settings.title and section.settings.title != blank %}
     <h1>{{ section.settings.title }}</h1>
   {% endif %}
@@ -52,6 +57,16 @@
       "type": "image_picker",
       "id": "main_image",
       "label": "Main Image"
+    },
+    {
+      "type": "header",
+      "content": "Image Collection"
+    },
+    {
+      "type": "collection",
+      "id": "image_collection",
+      "label": "Image Collection",
+      "info": "Select a collection for the banner image"
     },
     {
       "type": "text",
@@ -104,13 +119,28 @@
     {
       "type": "select",
       "id": "content_position",
-      "label": "Content Position",
+      "label": "Content Vertical Position",
       "options": [
         { "value": "top", "label": "Top" },
         { "value": "middle", "label": "Middle" },
         { "value": "bottom", "label": "Bottom" }
       ],
       "default": "bottom"
+    },
+    {
+      "type": "header",
+      "content": "Content Horizontal Position"
+    },
+    {
+      "type": "select",
+      "id": "content_position_horizontal",
+      "label": "Content Horizontal Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
     }
   ],
   "blocks": [],
